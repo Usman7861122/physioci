@@ -5,6 +5,8 @@ import { getProducts } from '../../lib/products';
 import { formatPrice } from '../../lib/format';
 
 export async function getStaticPaths() {
+  // Shopify is not connected yet: build without these pages instead of failing.
+  if (!import.meta.env.PUBLIC_SHOPIFY_STORE_DOMAIN || !import.meta.env.PUBLIC_SHOPIFY_STOREFRONT_TOKEN) return [];
   const products = await getProducts();
   return products.map((product) => ({
     params: { handle: product.handle },
