@@ -12,6 +12,8 @@ function normalize(raw: any): Product {
 }
 
 export async function getProducts(): Promise<Product[]> {
+  // Shopify is not connected yet: return an empty list so the build does not fail.
+  if (!import.meta.env.PUBLIC_SHOPIFY_STORE_DOMAIN || !import.meta.env.PUBLIC_SHOPIFY_STOREFRONT_TOKEN) return [];
   const data = await shopifyFetch<{ products: { nodes: any[] } }>(GET_PRODUCTS, { first: 10 });
   return data.products.nodes.map(normalize);
 }
