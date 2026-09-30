@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AddToCartButton from '../../components/react/AddToCartButton';
+import { getProducts } from '../../lib/products';
+import { formatPrice } from '../../lib/format';
+
+export async function getStaticPaths() {
+  const products = await getProducts();
+  return products.map((product) => ({
+    params: { handle: product.handle },
+    props: { product },
+  }));
+}
+
+const { product } = Astro.props;
+const variant = product.variants[0];
+const { amount, currencyCode } = product.priceRange.minVariantPrice;
+---
+<BaseLayout title={`${product.title} | Physioci`} description={product.description}>
+  <div class="grid gap-10 md:grid-cols-2">
+    {product.featuredImage && (
+      <img src={product.featuredImage.url} alt={product.featuredImage.altText ?? product.title} class="w-full rounded-xl" />
+    )}
+    <div>
+      <h1 class="text-3xl font-bold">{product.title}</h1>
+      <p class="mt-2 text-lg">{formatPrice(amount, currencyCode)}</p>
+      <div class="prose mt-6" set:html={product.descriptionHtml} />
+      <div class="mt-8">
+        <AddToCartButton client:load variantId={variant.id} available={variant.availableForSale} />
+      </div>
+    </div>
+  </div>
+</BaseLayout>

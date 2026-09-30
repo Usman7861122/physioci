@@ -1,0 +1,19 @@
+---
+interface Props {
+  eyebrow?: string;
+  title: string;
+  strong?: string;
+  intro?: string;
+  align?: 'center' | 'left';
+  tone?: 'gold' | 'white';
+}
+const { eyebrow, title, strong, intro, align = 'center', tone = 'gold' } = Astro.props;
+const center = align === 'center';
+---
+<div class:list={[center ? 'text-center' : 'text-left']} data-stagger>
+  {eyebrow && <p class:list={['font-nunito text-[13px] font-bold uppercase tracking-[0.35em]', tone === 'white' ? 'text-white/80' : 'text-[#a67c35]']}>{eyebrow}</p>}
+  <h2 class:list={['mt-2 font-jost text-[32px] font-light uppercase leading-[1.08] sm:text-[50px]', tone === 'white' ? 'text-white' : 'text-gold-deep']}>
+    {title}{strong && <> <strong class="font-bold">{strong}</strong></>}
+  </h2>
+  {intro && <p class:list={['mt-4 font-nunito text-[17px] leading-[1.55] sm:text-[19px]', center ? 'mx-auto max-w-[760px]' : 'max-w-[560px]', tone === 'white' ? 'text-white/90' : 'text-[#33333a]']}>{intro}</p>}
+</div>

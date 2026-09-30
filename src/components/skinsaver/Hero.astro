@@ -1,0 +1,44 @@
+---
+import BuyButton from '../BuyButton.astro';
+import CheckCircle from '../CheckCircle.astro';
+import { hero } from '../../data/skinsaver';
+---
+<section class="relative overflow-hidden bg-[#f3ead9]" aria-labelledby="ss-hero-title">
+  <img
+    src="/images/skinsaver/ss-hero.webp"
+    alt="GLP-1 SkinSaver box and pump bottle beside a white flower"
+    width="1674"
+    height="940"
+    fetchpriority="high"
+    class="hero-zoom absolute inset-0 h-full w-full object-cover object-[78%_center]"
+  />
+  <div class="absolute inset-0 bg-gradient-to-r from-[#f6efe2]/95 via-[#f6efe2]/85 to-[#f6efe2]/30 lg:hidden" aria-hidden="true"></div>
+
+  <div class="relative mx-auto flex min-h-[640px] max-w-[1200px] items-center px-5 py-14 lg:min-h-[760px] xl:px-0">
+    <div class="max-w-[600px]" data-stagger>
+      <p class="font-nunito text-[13px] font-bold uppercase tracking-[0.35em] text-[#a67c35]">GLP-1 Support</p>
+      <h1 id="ss-hero-title" class="mt-3 font-jost text-[44px] font-light leading-none text-gold-deep sm:text-[70px]">
+        GLP-1 SkinSaver<sup class="align-super text-[0.4em]">™</sup>
+      </h1>
+      <p class="mt-3 font-nunito text-[18px] text-[#33291d] sm:text-[22px]">{hero.tagline}</p>
+      <p class="mt-2 inline-block rounded-md bg-gradient-to-r from-[#efd7a3]/90 to-[#f6e9cd]/60 px-3 py-1 font-nunito text-[17px] font-extrabold text-gold-dark sm:text-[22px]">
+        {hero.highlight}
+      </p>
+      <p class="mt-3 max-w-[520px] font-nunito text-[16px] leading-[1.5] text-[#8f6a2c] sm:text-[18px]">{hero.intro}</p>
+
+      <ul class="mt-4 max-w-[440px]">
+        {hero.checks.map((c) => (
+          <li class="flex items-center gap-3 border-b border-gold-deep/40 py-3 transition-transform duration-300 hover:translate-x-1.5 last:border-b-0">
+            <CheckCircle class="h-9 w-9 shrink-0 text-gold-deep" />
+            <span class="font-nunito text-[21px] text-[#2b2b33] sm:text-[24px]">
+              {c.lead} <strong class="font-extrabold text-gold-deep">{c.strong}</strong>
+            </span>
+          </li>
+        ))}
+      </ul>
+
+      <p class="mt-4 max-w-[480px] font-nunito text-[15px] leading-[1.6] text-[#3a3a40]">{hero.note}</p>
+      <BuyButton size="lg" class="mt-6" />
+    </div>
+  </div>
+</section>

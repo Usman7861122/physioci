@@ -1,0 +1,32 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import { reviews, star, press } from '../../data/home';
+---
+<section class="bg-[#f6f6f6] px-5 py-16 lg:py-24" aria-labelledby="reviews-title">
+  <div class="mx-auto max-w-[1200px]">
+    <SectionHeading eyebrow="Verified purchases" title="Customers love" strong="Physio" />
+    <ul class="mt-10 grid gap-6 md:grid-cols-3" data-stagger>
+      {reviews.map((r) => (
+        <li class="flex flex-col items-center rounded-[20px] bg-white p-7 text-center shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.12)]">
+          <img src={star} alt="5 out of 5 stars" width="165" height="32" loading="lazy" class="h-8 w-auto" />
+          <img src={r.photo} alt="" width="96" height="96" loading="lazy" class="mt-4 h-24 w-24 rounded-full object-cover" />
+          <h3 class="mt-4 font-jost text-[22px] font-medium text-black">{r.title}</h3>
+          <p class="mt-2 font-nunito text-[15px] leading-[1.6] text-[#3a3a40]">“{r.quote}”</p>
+          <p class="mt-3 font-nunito text-[14px] font-bold text-gold-dark">– {r.name}</p>
+          <p class="font-nunito text-[13px] text-[#6b6b72]">Verified Purchase</p>
+        </li>
+      ))}
+    </ul>
+
+    <div class="mt-16">
+      <SectionHeading title="Featured In" />
+      <ul class="mt-8 flex flex-wrap items-center justify-center gap-x-12 gap-y-8" data-stagger>
+        {press.map((p) => (
+          <li>
+            <img src={p.src} alt={p.name} loading="lazy" class="h-14 w-auto max-w-[180px] object-contain opacity-70 grayscale transition duration-300 hover:scale-105 hover:opacity-100 hover:grayscale-0 sm:h-16" />
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>

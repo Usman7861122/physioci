@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+/* Brand tokens copied from the reference site */
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-tenor: "Tenor Sans", sans-serif;
+  --font-jost: "Jost", sans-serif;
+  --font-josefin: "Josefin Sans", sans-serif;
+  --font-nunito: "Nunito Sans", sans-serif;
+  --font-playfair: "Playfair Display", serif;
+  --font-source: "Source Serif 4", serif;
+
+  --color-gold: #b77c08;
+  --color-gold-light: #fcc461;
+  --color-brand-blue: #1c82cf;
+  --color-sale: #958e09;
+  --color-body: #333333;
+  --color-cart-badge: #d9534f;
+
+  /* Colors sampled from the PDF slides */
+  --color-gold-deep: #9a6a1c;
+  --color-gold-dark: #7f500d;
+  --color-cream: #f5f2ec;
+  --color-cream-2: #f7f2ea;
+  --color-cta: #0670cc;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-body);
+  background: #fff;
+}
+
+/* Keep anchor jumps (#buynow) from hiding under the sticky header */
+:target {
+  scroll-margin-top: 150px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Styles for HTML that comes from data/CMS (formula panels, product description) */
+.formula-panel p { margin: 0 0 14.4px; }
+.formula-panel ul { list-style: none; margin: 0; padding: 0; }
+.formula-panel li { padding: 10px; }
+
+.sidekick-description p { margin: 0 0 14.4px; }
+.sidekick-description h3 { font-size: 28px; font-weight: 500; line-height: 1.2; margin: 8px 0 16px; }
+.sidekick-description ul { list-style: disc; padding-left: 40px; margin: 0; }
+
+/* Gold gradient headline text (Not Another Supplement, chart title) */
+.gold-text {
+  background: linear-gradient(180deg, #c48a25 0%, #8a5a12 55%, #6e430a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Playfair Display uses old-style numbers by default; the slides use normal (lining) numbers */
+.font-playfair {
+  font-variant-numeric: lining-nums;
+}
+
+/* ---------- Scroll reveal + hover helpers ---------- */
+.js [data-reveal],
+.js [data-stagger] > :not(astro-island) {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0ms),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0ms),
+    translate 0.3s ease,
+    box-shadow 0.3s ease;
+}
+.js [data-reveal='left'] { transform: translateX(-36px); }
+.js [data-reveal='right'] { transform: translateX(36px); }
+.js [data-reveal='zoom'] { transform: scale(0.96); }
+.js [data-reveal].is-in,
+.js [data-stagger] > .is-in {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes heroZoom {
+  from { transform: scale(1.07); }
+  to { transform: scale(1); }
+}
+.hero-zoom { animation: heroZoom 1.8s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .js [data-reveal],
+  .js [data-stagger] > :not(astro-island) {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .hero-zoom { animation: none; }
+}
+
+/* Gentle floating for hero photos */
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.float-slow { animation: floaty 7s ease-in-out infinite; }
+.float-slower { animation: floaty 9s ease-in-out infinite reverse; }
+@media (prefers-reduced-motion: reduce) {
+  .float-slow, .float-slower { animation: none; }
+}
+
+/* Header floating over the homepage banner: light tint, turns solid on scroll */
+.nav-overlay {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.38));
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+.nav-overlay.is-solid {
+  background: #fff;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.09);
+}

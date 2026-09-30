@@ -1,0 +1,22 @@
+---
+import Button from './Button.astro';
+import SectionHeading from './SectionHeading.astro';
+import { steps } from '../../data/home';
+---
+<section class="bg-gradient-to-br from-[#9a6a1c] to-[#6e430a] px-5 py-16 lg:py-24" aria-labelledby="steps-title">
+  <div class="mx-auto max-w-[1200px]">
+    <SectionHeading eyebrow="Simple daily support" title="How It" strong="Works" tone="white" />
+    <ol class="relative mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4" data-stagger>
+      {steps.map((s, i) => (
+        <li class="group relative rounded-[20px] border border-white/25 bg-white/10 p-6 text-center backdrop-blur-sm transition duration-300 hover:-translate-y-2 hover:bg-white/20">
+          <span class="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-b from-[#fcc461] to-[#b77c08] font-playfair text-[26px] font-bold text-white shadow-lg transition-transform duration-300 group-hover:scale-110">{i + 1}</span>
+          <h3 class="mt-4 font-jost text-[22px] font-medium text-white">{s.title}</h3>
+          <p class="mt-2 font-nunito text-[15px] leading-[1.55] text-white/85">{s.text}</p>
+        </li>
+      ))}
+    </ol>
+    <div class="mt-10 flex justify-center" data-reveal="zoom">
+      <Button href="/shop" variant="light">Shop Now</Button>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,146 @@
+---
+import { assets } from '../data/assets';
+import { nav } from '../data/sidekick';
+
+interface Props {
+  overlay?: boolean;
+}
+const { overlay = false } = Astro.props;
+
+// Small extras for the Products dropdown (image + one short line per product).
+const menuMeta: Record<string, { img?: string; note: string }> = {
+  '/product/glp-1-sidekick': { img: '/images/sidekick-main-thumb.webp', note: 'Whole-body nutritional support' },
+  '/product/glp-1-skinsaver': { img: '/images/skinsaver/ss-gallery-thumb-1.webp', note: 'Topical exosome skin support' },
+  '/product/natures-glp-1': { note: 'GLP-1 support' },
+};
+---
+<header class:list={[overlay ? 'fixed inset-x-0 top-0 z-50' : 'sticky top-0 z-50']} data-header-overlay={overlay ? '' : undefined}>
+  <!-- Announcement bar -->
+  <div class:list={['px-[9px]', overlay ? 'bg-gold/95' : 'bg-gold']}>
+    <div class="mx-auto flex min-h-[46px] max-w-[1140px] items-center justify-center py-[9px]">
+      <a href="#buynow" class="font-tenor text-sm font-semibold uppercase leading-[26px] text-white sm:text-lg lg:text-[22px]">
+        Free Mixer with physio/sci or bundle purchase
+      </a>
+    </div>
+  </div>
+
+  <!-- Main navigation -->
+  <div id="nav-bar" class:list={['relative', overlay ? 'nav-overlay' : 'bg-white shadow-[0_10px_15px_rgba(0,0,0,0.09)]']}>
+    <div class="mx-auto flex h-[86px] max-w-[1200px] items-center justify-between px-4 py-[10px] lg:px-0">
+      <a href="/" class="block shrink-0" aria-label="Physio/Sci Laboratories home">
+        <img src={assets.logoHeader} alt="Physio/Sci Laboratories" width="200" height="66" class="h-[66px] w-[200px] object-contain" />
+      </a>
+
+      <!-- Desktop nav -->
+      <div class="hidden flex-1 items-center justify-center gap-5 lg:flex">
+        <nav aria-label="Main">
+          <ul class="flex">
+            {nav.map((item) => (
+              <li class="group relative">
+                <a
+                  href={item.href}
+                  class="flex items-center px-3 py-[13px] font-tenor text-[18px] font-semibold text-black transition-colors hover:text-gold focus-visible:text-gold"
+                >
+                  {item.label}
+                  {item.children && (
+                    <svg aria-hidden="true" viewBox="0 0 320 512" class="ml-2 h-[18px] w-[18px] fill-current transition-transform duration-200 group-hover:rotate-180 group-focus-within:rotate-180"><path d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"></path></svg>
+                  )}
+                </a>
+                {item.children && (
+                  <div class="invisible absolute left-1/2 top-full z-50 w-[340px] -translate-x-1/2 translate-y-2 pt-3 opacity-0 transition duration-200 ease-out group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 motion-reduce:transition-none">
+                    <div class="relative overflow-hidden rounded-2xl border border-[#eadfca] bg-white p-2 shadow-[0_18px_40px_rgba(90,60,20,0.18)]">
+                      <span class="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-gold via-gold-light to-gold" aria-hidden="true"></span>
+                      <p class="px-3 pb-1 pt-3 font-nunito text-[11px] font-bold uppercase tracking-[0.3em] text-gold-dark">Our Products</p>
+                      <ul>
+                        {item.children.map((c) => {
+                          const m = menuMeta[c.href];
+                          return (
+                            <li>
+                              <a href={c.href} class="group/item flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors hover:bg-cream focus-visible:bg-cream focus-visible:outline-none">
+                                {m?.img ? (
+                                  <img src={m.img} alt="" width="48" height="48" loading="lazy" class="h-12 w-12 shrink-0 rounded-lg object-cover ring-1 ring-[#eadfca]" />
+                                ) : (
+                                  <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-cream ring-1 ring-[#eadfca]" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" class="h-6 w-6 text-gold" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14"/><path d="M5 19c3-4 6-7 9-9"/></svg>
+                                  </span>
+                                )}
+                                <span class="min-w-0 flex-1">
+                                  <span class="block font-josefin text-[18px] font-semibold leading-tight text-gold-dark">{c.label}</span>
+                                  {m?.note && <span class="block font-nunito text-[13px] leading-snug text-[#6b6b72]">{m.note}</span>}
+                                </span>
+                                <svg aria-hidden="true" viewBox="0 0 24 24" class="h-4 w-4 shrink-0 -translate-x-1 text-gold opacity-0 transition duration-200 group-hover/item:translate-x-0 group-hover/item:opacity-100 group-focus-visible/item:translate-x-0 group-focus-visible/item:opacity-100" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                              </a>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </div>
+                  </div>
+                )}
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <a href="/cart" class="relative block h-5 w-5 text-black" aria-label="Cart, 0 items">
+          <svg viewBox="0 0 1000 1000" class="h-5 w-5 fill-current" aria-hidden="true"><path d="M740 854C740 883 763 906 792 906S844 883 844 854 820 802 792 802 740 825 740 854ZM217 156H958C977 156 992 173 989 191L957 452C950 509 901 552 843 552H297L303 581C311 625 350 656 395 656H875C892 656 906 670 906 687S892 719 875 719H394C320 719 255 666 241 593L141 94H42C25 94 10 80 10 62S25 31 42 31H167C182 31 195 42 198 56L217 156ZM230 219L284 490H843C869 490 891 470 895 444L923 219H230ZM677 854C677 791 728 740 792 740S906 791 906 854 855 969 792 969 677 918 677 854ZM260 854C260 791 312 740 375 740S490 791 490 854 438 969 375 969 260 918 260 854ZM323 854C323 883 346 906 375 906S427 883 427 854 404 802 375 802 323 825 323 854Z"></path></svg>
+          <span data-cart-count class="absolute -right-2 -top-2 flex h-4 w-4 items-center justify-center rounded-full bg-cart-badge text-[10px] leading-none text-white">0</span>
+        </a>
+
+        <a href="/my-account" class="flex items-center gap-[6px] font-sans text-base font-light text-black">
+          <img src={assets.signIn} alt="" width="18" height="18" class="h-[18px] w-[18px]" />
+          Sign In
+        </a>
+      </div>
+
+      <!-- Mobile controls -->
+      <div class="flex items-center gap-4 lg:hidden">
+        <a href="/cart" class="relative block h-6 w-6 text-black" aria-label="Cart, 0 items">
+          <svg viewBox="0 0 1000 1000" class="h-6 w-6 fill-current" aria-hidden="true"><path d="M740 854C740 883 763 906 792 906S844 883 844 854 820 802 792 802 740 825 740 854ZM217 156H958C977 156 992 173 989 191L957 452C950 509 901 552 843 552H297L303 581C311 625 350 656 395 656H875C892 656 906 670 906 687S892 719 875 719H394C320 719 255 666 241 593L141 94H42C25 94 10 80 10 62S25 31 42 31H167C182 31 195 42 198 56L217 156ZM230 219L284 490H843C869 490 891 470 895 444L923 219H230ZM677 854C677 791 728 740 792 740S906 791 906 854 855 969 792 969 677 918 677 854ZM260 854C260 791 312 740 375 740S490 791 490 854 438 969 375 969 260 918 260 854ZM323 854C323 883 346 906 375 906S427 883 427 854 404 802 375 802 323 825 323 854Z"></path></svg>
+          <span data-cart-count class="absolute -right-2 -top-2 flex h-4 w-4 items-center justify-center rounded-full bg-cart-badge text-[10px] leading-none text-white">0</span>
+        </a>
+        <button id="nav-toggle" type="button" class="flex h-11 w-11 items-center justify-center text-black" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu">
+          <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <nav id="mobile-nav" aria-label="Mobile" class="absolute left-0 right-0 top-full hidden bg-white shadow-[0_10px_15px_rgba(0,0,0,0.09)] lg:hidden">
+      <ul class="px-4 py-2">
+        {nav.map((item) => (
+          <li>
+            <a href={item.href} class="block py-3 font-tenor text-lg font-semibold text-black">{item.label}</a>
+            {item.children && (
+              <ul class="mb-2 ml-2 border-l-2 border-gold-light/60 pl-3">
+                {item.children.map((c) => (
+                  <li><a href={c.href} class="block py-2.5 font-josefin text-[17px] font-semibold text-gold-dark">{c.label}</a></li>
+                ))}
+              </ul>
+            )}
+          </li>
+        ))}
+        <li><a href="/my-account" class="block py-3 font-sans font-light text-black">Sign In</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('nav-toggle');
+  const menu = document.getElementById('mobile-nav');
+  toggle?.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!open));
+    toggle.setAttribute('aria-label', open ? 'Open menu' : 'Close menu');
+    menu?.classList.toggle('hidden', open);
+  });
+
+  // On the homepage the header floats over the banner. Once you scroll, it turns solid white.
+  const bar = document.getElementById('nav-bar');
+  if (bar?.classList.contains('nav-overlay')) {
+    const update = () => bar.classList.toggle('is-solid', window.scrollY > 40);
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+  }
+</script>

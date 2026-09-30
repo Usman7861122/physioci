@@ -1,0 +1,34 @@
+---
+import ProductGallery from './ProductGallery';
+import PurchaseOptions from './PurchaseOptions';
+import * as sidekick from '../../data/sidekick';
+
+// Defaults keep the GLP-1 Sidekick page working. Other product pages pass their own data.
+const {
+  product = sidekick.product,
+  gallery = sidekick.gallery,
+  options = sidekick.purchaseOptions,
+  descriptionHtml = sidekick.descriptionHtml,
+  badge,
+} = Astro.props;
+---
+<section class="bg-cream-2 px-5">
+  <div class="mx-auto grid max-w-[1140px] gap-10 py-[60px] md:grid-cols-2 md:gap-8">
+    <div class="min-w-0 p-[10px] md:sticky md:top-[130px] md:self-start">
+      <ProductGallery client:load images={gallery} badge={badge} />
+    </div>
+
+    <div class="flex min-w-0 flex-col gap-4 p-[10px]" data-stagger>
+      <p class="font-nunito text-[17px] font-bold uppercase leading-none text-gold-dark">{product.label}</p>
+      <h1 class="font-playfair text-[40px] font-medium uppercase leading-none tracking-[-0.02em] text-black sm:text-[58px]">
+        {product.title}<sup class="align-super text-[0.4em]">™</sup>
+      </h1>
+      <p class="font-nunito text-[20px] leading-[1.35] text-[#1b1b1b] sm:text-[25px]">{product.subtitle}</p>
+
+      <PurchaseOptions client:load options={options} />
+
+      <h2 class="mt-5 font-nunito text-[26px] font-bold leading-none text-black">Description</h2>
+      <div class="sidekick-description text-base leading-6 text-black" set:html={descriptionHtml} />
+    </div>
+  </div>
+</section>

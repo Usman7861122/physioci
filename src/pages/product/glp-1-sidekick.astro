@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/product/Hero.astro';
+import HiddenProblem from '../../components/product/HiddenProblem.astro';
+import Benefits from '../../components/product/Benefits.astro';
+import Formula from '../../components/product/Formula.astro';
+import ProductDetails from '../../components/product/ProductDetails.astro';
+import ComparisonChart from '../../components/product/ComparisonChart.astro';
+---
+<BaseLayout
+  title="GLP-1 Sidekick™ – Physio / Sci Laboratories"
+  description="GLP-1 Sidekick™ – Whole-Body Nutritional Support for GLP-1 Users and Calorie-Restricted Diets."
+  showComparison={false}
+>
+  <Hero />
+  <HiddenProblem />
+  <Benefits />
+  <Formula />
+  <ProductDetails badge="Sale!" />
+  <ComparisonChart />
+</BaseLayout>

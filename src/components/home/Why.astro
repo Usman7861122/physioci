@@ -1,0 +1,21 @@
+---
+import Button from './Button.astro';
+import SectionHeading from './SectionHeading.astro';
+import { why } from '../../data/home';
+---
+<section class="bg-gradient-to-b from-[#faf5ec] to-[#f4eadb] px-5 py-16 lg:py-24" aria-labelledby="why-title">
+  <div class="mx-auto max-w-[1200px]">
+    <SectionHeading eyebrow={why.sub} title={why.title} intro={why.text} />
+    <ul class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3" data-stagger>
+      {why.items.map((it, i) => (
+        <li class="group rounded-[18px] border border-[#eadfca] bg-white/80 p-6 transition duration-300 hover:-translate-y-1.5 hover:border-[#c9a45c] hover:shadow-[0_16px_36px_rgba(90,60,20,0.14)]">
+          <span class="flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-b from-[#d9a13a] to-[#a8731b] font-playfair text-[18px] font-bold text-white transition-transform duration-300 group-hover:scale-110">{i + 1}</span>
+          <h3 class="mt-4 font-jost text-[20px] font-medium leading-snug text-gold-dark">{it.title}</h3>
+          <p class="mt-2 font-nunito text-[15px] leading-[1.6] text-[#3a3a40]">{it.text}</p>
+        </li>
+      ))}
+    </ul>
+    <p class="mt-6 text-center font-nunito text-[13px] text-[#6b6b72]">*These statements have not been evaluated by the Food and Drug Administration. These products are not intended to diagnose, treat, cure, or prevent any disease.</p>
+    <div class="mt-8 flex justify-center" data-reveal="zoom"><Button href="/why-us" variant="brown">Learn More</Button></div>
+  </div>
+</section>

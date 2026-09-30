@@ -1,0 +1,40 @@
+---
+import BuyButton from '../BuyButton.astro';
+import { assets } from '../../data/assets';
+import { benefits } from '../../data/sidekick';
+---
+<section
+  class="bg-cover bg-left-top bg-no-repeat px-5 max-lg:bg-center"
+  style={`background-image:url('${assets.benefitsBg}')`}
+  aria-labelledby="support-title"
+>
+  <div class="mx-auto flex max-w-[1200px] justify-end py-[50px] max-lg:justify-center">
+    <div class="w-full max-w-[580px] rounded-lg p-[10px] max-lg:bg-[#f7f2ea]/85" data-stagger>
+      <h2 id="support-title" class="font-playfair text-[42px] font-bold leading-none tracking-[-0.02em] text-[#84612c] sm:text-[56px]">
+        Support Your Body
+      </h2>
+      <p class="mt-3 font-playfair text-[24px] font-bold leading-tight tracking-[-0.01em] text-[#111] sm:text-[30px]">
+        Add SIDEKICK to Your GLP-1 Journey
+      </p>
+      <p class="mt-3 font-source text-[18px] leading-[1.45] text-[#222]">
+        Don’t let the side effects of GLP-1 medications drain your strength, muscle, skin, or vitality.
+      </p>
+
+      <ul class="mt-4">
+        {benefits.map((b) => (
+          <li class="group flex items-center gap-3 border-t border-[#b89b6a]/40 py-3 transition-colors duration-300 hover:bg-white/40">
+            <img src={b.icon} alt="" width="60" height="60" loading="lazy" class="h-[60px] w-[60px] shrink-0 transition-transform duration-300 group-hover:scale-110" />
+            <div>
+              <h3 class="font-nunito text-[19px] font-bold leading-tight text-[#8a642a] sm:text-[21px]">{b.title}</h3>
+              <p class="font-source text-[15px] text-[#222]">{b.text}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+
+      <div class="mt-3 flex justify-center">
+        <BuyButton />
+      </div>
+    </div>
+  </div>
+</section>

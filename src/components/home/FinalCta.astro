@@ -1,0 +1,18 @@
+---
+import Button from './Button.astro';
+---
+<section
+  class="relative overflow-hidden bg-cover bg-center px-5 py-16 lg:py-24"
+  style="background-image:url('/images/skinsaver/ss-advanced-bg.webp')"
+  aria-labelledby="cta-title"
+>
+  <div class="absolute inset-0 bg-[#f8f1e4]/60" aria-hidden="true"></div>
+  <div class="relative mx-auto max-w-[820px] text-center" data-stagger>
+    <h2 id="cta-title" class="font-jost text-[32px] font-light uppercase leading-[1.1] text-gold-deep sm:text-[52px]">Support Your Body. <strong class="font-bold">Protect Your Progress.</strong></h2>
+    <p class="mt-4 font-nunito text-[18px] text-[#33333a]">Start with Sidekick for whole-body support, add SkinSaver for your skin, or save with the bundle.</p>
+    <div class="mt-8 flex flex-wrap justify-center gap-3">
+      <Button href="/product/glp-1-sidekick">Shop Sidekick</Button>
+      <Button href="/product/glp-1-skinsaver" variant="brown">Shop SkinSaver</Button>
+    </div>
+  </div>
+</section>

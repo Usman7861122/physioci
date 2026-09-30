@@ -1,0 +1,43 @@
+---
+import BuyButton from '../BuyButton.astro';
+import CheckCircle from '../CheckCircle.astro';
+import { problem } from '../../data/skinsaver';
+---
+<section class="bg-gradient-to-br from-[#faf5ec] to-[#f4eadb] px-5" aria-labelledby="ss-problem-title">
+  <div class="mx-auto grid max-w-[1200px] items-center gap-10 py-14 lg:grid-cols-[minmax(0,560px)_1fr] lg:gap-14 lg:py-16">
+    <img
+      src="/images/skinsaver/ss-problem.webp"
+      alt="GLP-1 SkinSaver pump bottle on a stone shelf beside a vase and a stone dish"
+      width="774"
+      height="800"
+      loading="lazy"
+      data-reveal="left"
+      class="h-auto w-full rounded-[22px] shadow-[0_18px_40px_rgba(90,60,20,0.18)]"
+    />
+
+    <div class="font-nunito" data-stagger>
+      <h2 id="ss-problem-title" class="font-jost text-[30px] font-semibold uppercase leading-[1.05] tracking-[-0.01em] text-gold-dark sm:text-[40px]">
+        {problem.title[0]}<br />{problem.title[1]}
+      </h2>
+      <p class="mt-4 max-w-[560px] text-[17px] leading-[1.5] text-[#2f2f35]">{problem.intro}</p>
+      <hr class="my-5 w-[85%] border-0 border-t border-gold-deep/40" />
+      <p class="text-[18px] font-extrabold text-[#2b2b33]">{problem.lead}</p>
+
+      <ul class="mt-2">
+        {problem.concerns.map((c) => (
+          <li class="flex items-center gap-4 py-2 transition-transform duration-300 hover:translate-x-1.5">
+            <CheckCircle class="h-[34px] w-[34px] shrink-0 text-gold-deep" />
+            <span class="w-full max-w-[420px] border-b border-gold-deep/25 py-2 text-[19px] text-[#2b2b33]">
+              {c.lead2
+                ? <Fragment><strong class="font-extrabold">{c.strong}</strong>{' '}{c.lead2}{' '}<strong class="font-extrabold">{c.strong2}</strong></Fragment>
+                : <Fragment>{c.lead}{' '}<strong class="font-extrabold">{c.strong}</strong></Fragment>}
+            </span>
+          </li>
+        ))}
+      </ul>
+
+      <p class="mt-4 max-w-[600px] text-[16px] leading-[1.6] text-[#3a3a40]">{problem.outro}</p>
+      <BuyButton class="mt-5" />
+    </div>
+  </div>
+</section>

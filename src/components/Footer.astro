@@ -1,0 +1,95 @@
+---
+import BuyButton from './BuyButton.astro';
+import { assets } from '../data/assets';
+import { comparison } from '../data/sidekick';
+
+interface Props {
+  showComparison?: boolean;
+}
+const { showComparison = true } = Astro.props;
+---
+<footer>
+  <!-- Comparison -->
+  {showComparison && (
+  <section class="px-5" aria-labelledby="compare-heading">
+    <div class="mx-auto flex max-w-[1200px] flex-col items-center justify-center gap-5 pb-[60px] pt-[60px] lg:flex-row lg:items-start lg:pt-[100px]">
+      <div class="flex w-full flex-col items-center gap-5 p-[10px] text-center text-black lg:w-[400px] lg:shrink-0">
+        <h2 id="compare-heading" class="font-sans text-[28px] font-medium leading-[1.2] lg:text-[35px]">
+          <b class="font-bold">GLP-1 Sidekick™ vs.</b><br />Another GLP-1 Supplement
+        </h2>
+        <p class="mb-[10px] text-[20px]">
+          Purposefully formulated to provide comprehensive <b class="font-bold">nutritional, digestive, hydration, and wellness support alongside your GLP-1 journey.</b>
+        </p>
+        <BuyButton size="lg" />
+      </div>
+
+      <div class="w-full max-w-[750px] p-[10px]">
+        <div role="table" aria-label="GLP-1 Sidekick compared with another GLP-1 supplement">
+          <div role="row" class="flex items-stretch rounded-t-[10px] bg-gold/[0.22]">
+            <div role="columnheader" class="flex w-1/3 flex-col justify-end p-[15px]">
+              <span class="text-base font-semibold text-black sm:text-[24px]">Benefit</span>
+            </div>
+            <div role="columnheader" class="-mt-[30px] flex w-1/3 flex-col justify-end gap-5 rounded-t-[15px] bg-gold p-[15px]">
+              <img src={assets.compareBottle} alt="" width="60" height="91" class="-mt-[60px] mx-auto h-[91px] w-[60px] object-contain" />
+              <span class="text-center text-base font-semibold text-white sm:text-[24px]">GLP-1 Sidekick™</span>
+            </div>
+            <div role="columnheader" class="flex w-1/3 flex-col justify-end p-[15px]">
+              <span class="text-center text-base font-semibold text-black sm:text-[24px]">Another Supplement</span>
+            </div>
+          </div>
+
+          {comparison.rows.map(([label, ours, theirs], i) => (
+            <div role="row" class:list={['flex items-stretch bg-gold/[0.22]', i === comparison.rows.length - 1 && 'rounded-b-[10px]']}>
+              <div role="rowheader" class="flex w-1/3 items-center p-[15px]">
+                <span class="text-sm font-semibold text-black sm:text-[22px]">{label}</span>
+              </div>
+              <div role="cell" class="flex w-1/3 items-center bg-gold p-[15px]">
+                <span class="flex items-center text-sm text-white sm:text-[20px]">
+                  <svg aria-hidden="true" viewBox="0 0 512 512" class="mr-[10px] hidden h-5 w-5 shrink-0 fill-white sm:block"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg>
+                  {ours}
+                </span>
+              </div>
+              <div role="cell" class="flex w-1/3 items-center p-[15px]">
+                <span class="flex items-center text-sm text-black sm:text-[20px]">
+                  <svg aria-hidden="true" viewBox="0 0 448 512" class="mr-[10px] hidden h-7 w-7 shrink-0 fill-black sm:block"><path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg>
+                  {theirs}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+  )}
+
+  <!-- Legal -->
+  <section class="bg-no-repeat px-[10px]" style={`background-image:url('${assets.footerBg}')`}>
+    <div class="mx-auto flex max-w-[1140px] flex-col gap-5 py-[60px]">
+      <div class="flex flex-col gap-5 p-[10px] md:flex-row">
+        <div class="flex flex-col gap-5 p-[10px] md:w-1/2">
+          <img src={assets.logoFooter} alt="Physio/Sci Laboratories logo" width="186" height="61" class="h-[61px] w-[186px] object-contain" />
+          <p class="font-light text-black">© 2026, Physio/Sci Laboratoriesy. — All Rights Reserved</p>
+        </div>
+        <div class="flex flex-col justify-center gap-5 p-[10px] md:w-1/2">
+          <ul class="flex flex-wrap gap-x-4 text-[17px] font-light">
+            <li><a href="/faq" class="text-black hover:text-gold">FAQ</a></li>
+            <li><a href="/privacy-policy" class="text-black hover:text-gold">Privacy Policy</a></li>
+            <li><a href="/terms-conditions" class="text-black hover:text-gold">Terms &amp; Conditions</a></li>
+            <li><a href="/customer-care" class="text-black hover:text-gold">Customer Care</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="border border-black p-5">
+        <p class="text-sm font-light text-black">
+          * These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease
+        </p>
+      </div>
+
+      <p class="font-light text-black">
+        Information on this site is provided for informational purposes only. It is not meant to substitute for medical advice from your physician or other medical professional. You should not use the information contained herein for diagnosing or treating a health problem or disease, or prescribing any medication. Carefully read all product documentation. If you have or suspect that you have a medical problem, promptly contact your regular health care provider.
+      </p>
+    </div>
+  </section>
+</footer>

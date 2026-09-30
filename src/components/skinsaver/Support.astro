@@ -1,0 +1,42 @@
+---
+import BuyButton from '../BuyButton.astro';
+import { support } from '../../data/skinsaver';
+---
+<section class="relative overflow-hidden bg-[#f6eee1]" aria-labelledby="ss-support-title">
+  <!-- mobile: photo on top -->
+  <img
+    src="/images/skinsaver/ss-support.webp"
+    alt="Smiling woman touching her cheek beside a GLP-1 SkinSaver pump bottle"
+    width="1675"
+    height="939"
+    loading="lazy"
+    class="h-[380px] w-full object-cover object-left sm:h-[460px] lg:absolute lg:inset-0 lg:h-full"
+  />
+  <div class="relative mx-auto max-w-[1440px] px-5 py-10 lg:py-14">
+    <div class="lg:ml-[52%] lg:w-[45%]" data-stagger>
+      <p class="font-nunito text-[13px] font-bold uppercase tracking-[0.35em] text-[#a67c35]">GLP-1 Support</p>
+      <h2 id="ss-support-title" class="mt-2 font-jost text-[38px] font-light uppercase leading-[1.02] text-gold-deep sm:text-[56px]">
+        {support.title[0]}<br />{support.title[1]}
+      </h2>
+      <p class="mt-4 font-nunito text-[17px] leading-[1.45] text-[#33333a]">{support.intro}</p>
+
+      <ul class="mt-5">
+        {support.items.map((it) => (
+          <li class="group flex items-center gap-4 border-t border-gold-deep/30 py-3 transition-colors duration-300 hover:bg-white/40">
+            <img src={it.icon} alt="" width="64" height="64" loading="lazy" class="h-[56px] w-[56px] shrink-0 object-contain transition-transform duration-300 group-hover:scale-110 sm:h-[64px] sm:w-[64px]" />
+            <div class="font-nunito">
+              <h3 class="text-[22px] leading-tight text-gold-deep sm:text-[26px]">
+                {it.lead} <strong class="font-extrabold">{it.strong}</strong>
+              </h3>
+              <p class="text-[15px] leading-snug text-[#33333a]" set:html={it.text} />
+            </div>
+          </li>
+        ))}
+      </ul>
+
+      <div class="mt-4 flex justify-center">
+        <BuyButton size="lg" />
+      </div>
+    </div>
+  </div>
+</section>

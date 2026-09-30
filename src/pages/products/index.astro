@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import { getProducts } from '../../lib/products';
+
+const products = await getProducts();
+---
+<BaseLayout title="Products | Physioci">
+  <h1 class="mb-8 text-3xl font-bold">Products</h1>
+  <div class="grid gap-6 sm:grid-cols-3">
+    {products.map((p) => <ProductCard product={p} />)}
+  </div>
+</BaseLayout>

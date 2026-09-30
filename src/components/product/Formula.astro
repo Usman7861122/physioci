@@ -1,0 +1,28 @@
+---
+import FormulaCards from './FormulaCards';
+import { assets } from '../../data/assets';
+import { formulaCards } from '../../data/sidekick';
+---
+<section
+  class="bg-cover bg-center bg-no-repeat px-5"
+  style={`background-image:url('${assets.formulaBg}')`}
+  aria-labelledby="formula-title"
+>
+  <div class="mx-auto max-w-[1240px] py-14 lg:py-[72px]">
+    <h2 id="formula-title" class="text-center font-playfair tracking-[-0.02em]" data-reveal>
+      <span class="flex items-center justify-center gap-5">
+        <span class="hidden h-px w-24 bg-gold-deep md:block lg:w-40" aria-hidden="true"></span>
+        <span class="gold-text text-[34px] font-black leading-[1.1] sm:text-[56px]">Not Another Supplement.</span>
+        <span class="hidden h-px w-24 bg-gold-deep md:block lg:w-40" aria-hidden="true"></span>
+      </span>
+      <span class="block text-[32px] font-bold leading-[1.15] text-black sm:text-[54px]">A Systemic Support Formula.</span>
+    </h2>
+    <p data-reveal style="--d:120ms" class="mt-4 text-center font-nunito text-[18px] text-[#1b1b1b] sm:text-[24px]">
+      GLP-1 Sidekick addresses the <strong class="font-extrabold">entire metabolic shift</strong> caused by GLP-1 medications.
+    </p>
+
+    <div class="mt-8">
+      <FormulaCards client:visible cards={formulaCards} />
+    </div>
+  </div>
+</section>

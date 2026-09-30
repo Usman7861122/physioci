@@ -1,0 +1,39 @@
+---
+import Button from './Button.astro';
+import SectionHeading from './SectionHeading.astro';
+import CheckCircle from '../CheckCircle.astro';
+import { products } from '../../data/home';
+---
+<section id="products" class="bg-gradient-to-b from-[#faf5ec] to-[#f4eadb] px-5 py-16 lg:py-24" aria-labelledby="products-title">
+  <div class="mx-auto max-w-[1200px]">
+    <SectionHeading eyebrow="Our Products" title="More Than Weight Loss." strong="Support for the Whole You." />
+    <ul class="mt-10 grid gap-6 lg:grid-cols-3" data-stagger>
+      {products.map((p) => (
+        <li class="group flex flex-col overflow-hidden rounded-[22px] border border-[#eadfca] bg-white shadow-[0_10px_30px_rgba(90,60,20,0.08)] transition duration-300 hover:-translate-y-2 hover:shadow-[0_22px_44px_rgba(90,60,20,0.18)]">
+          <a href={p.href} class="block overflow-hidden" tabindex="-1" aria-hidden="true">
+            <img src={p.image} alt={p.alt} width="640" height="520" loading="lazy" class="h-[260px] w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          </a>
+          <div class="flex flex-1 flex-col p-6">
+            <p class="font-nunito text-[12px] font-bold uppercase tracking-[0.3em] text-[#a67c35]">{p.label}</p>
+            <h3 class="mt-1 font-playfair text-[28px] font-medium leading-tight text-black">{p.name}</h3>
+            <p class="mt-1 font-nunito text-[16px] font-bold text-gold-dark">{p.lead}</p>
+            <p class="mt-3 font-nunito text-[15px] leading-[1.55] text-[#3a3a40]">{p.text}</p>
+            {p.points.length > 0 && (
+              <ul class="mt-4 space-y-1.5">
+                {p.points.map((pt) => (
+                  <li class="flex items-center gap-2 font-nunito text-[15px] text-[#2b2b33]">
+                    <CheckCircle class="h-5 w-5 shrink-0 text-gold-deep" />{pt}
+                  </li>
+                ))}
+              </ul>
+            )}
+            <div class="mt-auto flex flex-wrap items-center justify-between gap-3 pt-6">
+              {p.price ? <p class="font-nunito text-[18px] font-extrabold text-black">{p.price}</p> : <span></span>}
+              <Button href={p.href} variant="brown">Learn More</Button>
+            </div>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

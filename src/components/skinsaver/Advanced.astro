@@ -1,0 +1,25 @@
+---
+import AdvancedCards from './AdvancedCards';
+import BuyButton from '../BuyButton.astro';
+import { advanced } from '../../data/skinsaver';
+---
+<section
+  class="bg-cover bg-center bg-no-repeat px-5"
+  style="background-image:url('/images/skinsaver/ss-advanced-bg.webp')"
+  aria-labelledby="ss-adv-title"
+>
+  <div class="mx-auto max-w-[1240px] py-14 lg:py-[70px]">
+    <h2 id="ss-adv-title" data-reveal class="text-center font-jost text-[30px] font-light uppercase leading-[1.1] text-gold-deep sm:text-[56px]">
+      Advanced Support. <strong class="font-bold">Beautiful Skin.</strong>
+    </h2>
+    <p data-reveal style="--d:120ms" class="mx-auto mt-4 max-w-[900px] text-center font-nunito text-[17px] leading-[1.45] text-[#33333a] sm:text-[20px]">
+      <strong class="font-extrabold text-gold-deep">GLP-1 SkinSaver™</strong> {advanced.intro}
+    </p>
+    <div class="mt-8">
+      <AdvancedCards client:visible cards={advanced.cards} />
+    </div>
+    <div class="mt-10 flex justify-center" data-reveal="zoom">
+      <BuyButton size="lg" />
+    </div>
+  </div>
+</section>

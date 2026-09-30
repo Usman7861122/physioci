@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/skinsaver/Hero.astro';
+import Problem from '../../components/skinsaver/Problem.astro';
+import Support from '../../components/skinsaver/Support.astro';
+import Advanced from '../../components/skinsaver/Advanced.astro';
+import ProductDetails from '../../components/product/ProductDetails.astro';
+import { product, gallery, purchaseOptions, descriptionHtml } from '../../data/skinsaver';
+---
+<BaseLayout
+  title="GLP-1 SkinSaver™ – Physio / Sci Laboratories"
+  description="GLP-1 SkinSaver™ – The Skin Support Your GLP-1 Journey Has Been Missing."
+  showComparison={false}
+>
+  <Hero />
+  <Problem />
+  <Support />
+  <Advanced />
+  <ProductDetails product={product} gallery={gallery} options={purchaseOptions} descriptionHtml={descriptionHtml} />
+</BaseLayout>

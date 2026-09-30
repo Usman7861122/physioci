@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/home/Hero.astro';
+import Products from '../components/home/Products.astro';
+import Formula from '../components/product/Formula.astro';
+import Skin from '../components/home/Skin.astro';
+import Steps from '../components/home/Steps.astro';
+import Deals from '../components/home/Deals.astro';
+import Why from '../components/home/Why.astro';
+import Experts from '../components/home/Experts.astro';
+import Reviews from '../components/home/Reviews.astro';
+import Blog from '../components/home/Blog.astro';
+import FinalCta from '../components/home/FinalCta.astro';
+---
+<BaseLayout
+  title="Physio / Sci Laboratories – Support Your Body. Protect Your Progress."
+  description="Physician-inspired nutritional and skincare solutions designed to support patients using GLP-1 medications."
+  showComparison={false}
+  overlayHeader
+>
+  <Hero />
+  <Products />
+  <Formula />
+  <Skin />
+  <Steps />
+  <Deals />
+  <Why />
+  <Experts />
+  <Reviews />
+  <Blog />
+  <FinalCta />
+</BaseLayout>
