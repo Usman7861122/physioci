@@ -5,7 +5,7 @@ import { addToCart } from '../../lib/cart';
 export interface Option {
   id: string;
   title: string;
-  price: number;
+  price: number | null;
   comparePrice: number | null;
   badge: string | null;
   image: string;
@@ -96,7 +96,7 @@ export default function PurchaseOptions({ options }: { options: Option[] }) {
                   )}
                 </div>
                 <p className="font-nunito text-[17px] font-bold text-black">
-                  {money(o.price)}
+                  {o.price == null ? 'Price coming soon' : money(o.price)}
                   {o.comparePrice && (
                     <span className="ml-2 text-[14px] font-normal text-[#777] line-through">
                       {money(o.comparePrice)}

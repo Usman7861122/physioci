@@ -1,0 +1,41 @@
+---
+import BuyButton from '../BuyButton.astro';
+import NatIcon from './NatIcon.astro';
+import { problem } from '../../data/natures';
+---
+<section class="bg-gradient-to-br from-[#faf5ec] to-[#f4eadb] px-5" aria-labelledby="nat-problem-title">
+  <div class="mx-auto grid max-w-[1200px] items-center gap-10 py-14 lg:grid-cols-[minmax(0,540px)_1fr] lg:gap-14 lg:py-16">
+    <img
+      src="/images/natures-glp1/nat-problem.webp"
+      alt="Nature’s GLP-1 bottle with capsules, a glass of water and green plants"
+      width="1000"
+      height="1085"
+      loading="lazy"
+      data-reveal="left"
+      class="h-auto w-full rounded-[22px] shadow-[0_18px_40px_rgba(90,60,20,0.18)]"
+    />
+
+    <div class="font-nunito" data-stagger>
+      <h2 id="nat-problem-title" class="font-jost text-[30px] font-semibold uppercase leading-[1.05] tracking-[-0.01em] text-gold-dark sm:text-[40px]">
+        {problem.title[0]}<br />{problem.title[1]}
+      </h2>
+      <p class="mt-4 max-w-[560px] text-[17px] leading-[1.5] text-[#2f2f35]">{problem.intro}</p>
+      <hr class="my-5 w-[85%] border-0 border-t border-gold-deep/40" />
+      <p class="text-[18px] font-extrabold text-gold-deep">{problem.lead}</p>
+
+      <ul class="mt-2">
+        {problem.items.map((it) => (
+          <li class="flex items-center gap-4 py-2 transition-transform duration-300 hover:translate-x-1.5">
+            <NatIcon name={it.icon} class="h-[38px] w-[38px] shrink-0 text-gold-deep" />
+            <span class="w-full max-w-[440px] border-b border-gold-deep/25 py-2 text-[19px] text-[#2b2b33]">
+              <strong class="font-extrabold">{it.strong}</strong>{' '}{it.rest}
+            </span>
+          </li>
+        ))}
+      </ul>
+
+      <p class="mt-4 max-w-[560px] text-[17px] font-extrabold leading-[1.45] text-gold-deep">{problem.outro}</p>
+      <BuyButton class="mt-5" />
+    </div>
+  </div>
+</section>

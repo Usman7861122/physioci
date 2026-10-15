@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/natures/Hero.astro';
+import Problem from '../../components/natures/Problem.astro';
+import Science from '../../components/natures/Science.astro';
+import ProductDetails from '../../components/product/ProductDetails.astro';
+import { product, gallery, purchaseOptions, descriptionHtml } from '../../data/natures';
+---
+<BaseLayout
+  title="Nature’s GLP-1™ – Physio / Sci Laboratories"
+  description="Nature’s GLP-1™ – Your Body’s Natural GLP-1 Response. Balance blood sugar. Reduce cravings. Support metabolism."
+  showComparison={false}
+>
+  <Hero />
+  <Problem />
+  <Science />
+  <ProductDetails product={product} gallery={gallery} options={purchaseOptions} descriptionHtml={descriptionHtml} />
+</BaseLayout>
