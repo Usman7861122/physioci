@@ -1,0 +1,45 @@
+---
+import BuyButton from '../BuyButton.astro';
+import NatIcon from '../natures/NatIcon.astro';
+import { formulas } from '../../data/bundle';
+---
+<section class="relative overflow-hidden bg-[#f6eee1] lg:h-[max(760px,59vw)]" aria-labelledby="bun-formulas-title">
+  <img
+    src="/images/bundle/bundle-better-together.webp"
+    alt="Smiling couple with a pink shaker beside GLP-1 Sidekick and GLP-1 SkinSaver; the woman touches her cheek"
+    width="1633"
+    height="963"
+    loading="lazy"
+    class="h-[380px] w-full object-cover object-[28%_center] sm:h-[500px] lg:absolute lg:inset-0 lg:h-full lg:object-center"
+  />
+  <div class="absolute inset-y-0 right-0 hidden w-[50%] bg-gradient-to-l from-[#f6eee1]/90 via-[#f6eee1]/75 to-transparent lg:block" aria-hidden="true"></div>
+  <div class="relative flex w-full items-center px-5 py-10 lg:h-full lg:py-8">
+    <div class="lg:ml-[57%] lg:w-[41%] lg:max-w-[760px]" data-stagger>
+      <p class="font-nunito text-[13px] font-bold uppercase tracking-[0.35em] text-[#a67c35]">{formulas.eyebrow}</p>
+      <h2 id="bun-formulas-title" class="mt-2 font-playfair text-[34px] font-semibold leading-[1.05] text-gold-deep sm:text-[46px]">
+        {formulas.title[0]}<br />{formulas.title[1]}
+      </h2>
+      <p class="mt-3 max-w-[600px] font-nunito text-[15.5px] leading-[1.45] text-[#33333a]">{formulas.intro}</p>
+
+      <ul class="mt-4 max-w-[640px]">
+        {formulas.items.map((it) => (
+          <li class="group flex items-start gap-4 border-t border-gold-deep/30 py-2.5 transition-colors duration-300 hover:bg-white/40">
+            <NatIcon name={it.icon} class="mt-1 h-[46px] w-[46px] shrink-0 text-gold-deep transition-transform duration-300 group-hover:scale-110" />
+            <div class="font-nunito">
+              <h3 class="text-[15px] font-extrabold uppercase tracking-[0.06em] text-gold-deep">{it.title}</h3>
+              {it.lines.map(([who, what]) => (
+                <p class="text-[14.5px] leading-snug text-[#2b2b33]"><strong class="font-extrabold text-[#1f3a5f]">{who}:</strong> {what}</p>
+              ))}
+              <p class="mt-0.5 text-[14.5px] leading-snug text-[#555]">{it.text}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+
+      <div class="mt-4 flex max-w-[640px] flex-col items-center gap-2">
+        <BuyButton size="lg" />
+        <p class="font-nunito text-[12px] font-bold uppercase tracking-[0.3em] text-[#a67c35]">{formulas.closing}</p>
+      </div>
+    </div>
+  </div>
+</section>

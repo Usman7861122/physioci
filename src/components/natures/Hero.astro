@@ -3,18 +3,18 @@ import BuyButton from '../BuyButton.astro';
 import NatIcon from './NatIcon.astro';
 import { hero } from '../../data/natures';
 ---
-<section class="relative overflow-hidden bg-[#f6ecdc]" aria-labelledby="nat-hero-title">
+<section class="relative overflow-hidden bg-[#f6ecdc] lg:h-[clamp(720px,56vw,920px)]" aria-labelledby="nat-hero-title">
   <img
     src="/images/natures-glp1/nat-hero.webp"
     alt="Nature’s GLP-1 bottle on a stone shelf beside a glass of water and green leaves"
     width="1676"
     height="939"
     fetchpriority="high"
-    class="hero-zoom h-[360px] w-full object-cover object-[80%_center] sm:h-[480px] lg:absolute lg:inset-0 lg:h-full lg:object-[78%_center]"
+    class="h-[360px] w-full object-cover object-[80%_center] sm:h-[480px] lg:absolute lg:inset-0 lg:h-full lg:object-center"
   />
   <div class="absolute inset-0 hidden bg-gradient-to-r from-[#f8efe0]/85 via-[#f8efe0]/40 to-transparent lg:block" aria-hidden="true"></div>
 
-  <div class="relative mx-auto flex max-w-[1200px] items-center px-5 py-10 lg:min-h-[760px] lg:py-14 xl:px-0">
+  <div class="relative mx-auto flex max-w-[1200px] items-center px-5 py-10 lg:h-full lg:py-14 xl:px-0">
     <div class="max-w-[600px]" data-stagger>
       <p class="font-nunito text-[13px] font-bold uppercase tracking-[0.35em] text-[#a67c35]">{hero.eyebrow}</p>
       <h1 id="nat-hero-title" class="mt-3 font-jost whitespace-nowrap text-[38px] font-light uppercase leading-none text-gold-deep sm:text-[64px]">

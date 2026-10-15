@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/bundle/Hero.astro';
+import Approach from '../../components/bundle/Approach.astro';
+import Formulas from '../../components/bundle/Formulas.astro';
+import ProductDetails from '../../components/product/ProductDetails.astro';
+import { product, gallery, purchaseOptions, descriptionHtml } from '../../data/bundle';
+---
+<BaseLayout
+  title="GLP-1 Total Transformation System™ – Physio / Sci Laboratories"
+  description="GLP-1 SIDEKICK™ + GLP-1 SkinSaver™. A complete inside + outside support system for your weight loss journey."
+  showComparison={false}
+>
+  <Hero />
+  <Approach />
+  <Formulas />
+  <ProductDetails product={product} gallery={gallery} options={purchaseOptions} descriptionHtml={descriptionHtml} />
+</BaseLayout>

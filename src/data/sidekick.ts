@@ -50,8 +50,8 @@ export const purchaseOptions = [
     price: 259.99,
     comparePrice: 450.0,
     badge: null as string | null,
-    image: '/images/option-bundle.webp',
-    description: 'The complete Physio/Sci bundle. Best value.',
+    image: '/images/bundle/bundle-option.webp',
+    description: 'GLP-1 Total Transformation System™: GLP-1 SIDEKICK™ + GLP-1 SkinSaver™. Best value.',
     variantId: '',
   },
 ];
@@ -184,6 +184,7 @@ export const nav = [
       { label: 'GLP-1 Sidekick™', href: '/product/glp-1-sidekick' },
       { label: 'GLP-1 SkinSaver™', href: '/product/glp-1-skinsaver' },
       { label: 'Nature’s GLP-1™', href: '/product/natures-glp-1' },
+      { label: 'Total Transformation System™', href: '/product/glp-1-total-transformation-system' },
     ],
   },
   { label: 'Blog', href: '/blog' },

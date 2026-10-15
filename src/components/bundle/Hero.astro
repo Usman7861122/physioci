@@ -1,0 +1,41 @@
+---
+import BuyButton from '../BuyButton.astro';
+import NatIcon from '../natures/NatIcon.astro';
+import { hero } from '../../data/bundle';
+---
+<section class="relative overflow-hidden bg-[#f6ecdc] lg:h-[clamp(800px,58vw,960px)]" aria-labelledby="bun-hero-title">
+  <img
+    src="/images/bundle/bundle-hero.webp"
+    alt="GLP-1 Sidekick jar and GLP-1 SkinSaver pump bottle on a stone shelf beside a white flower"
+    width="1690"
+    height="931"
+    fetchpriority="high"
+    class="h-[340px] w-full object-cover object-[92%_center] sm:h-[480px] lg:absolute lg:inset-0 lg:h-full lg:object-center"
+  />
+  <div class="relative mx-auto flex max-w-[1200px] items-center px-5 py-10 lg:h-full lg:pb-10 lg:pt-16 xl:px-0">
+    <div class="max-w-[560px]" data-stagger>
+      <p class="font-nunito text-[13px] font-bold uppercase tracking-[0.35em] text-[#a67c35]">{hero.eyebrow}</p>
+      <h1 id="bun-hero-title" class="mt-3 font-jost text-[32px] font-light uppercase leading-[1.02] text-gold-deep sm:text-[54px]">
+        {hero.title[0]}<br />{hero.title[1]}<br />{hero.title[2]}<sup class="align-super text-[0.35em]">™</sup>
+      </h1>
+      <p class="mt-3 block max-w-full rounded-md bg-gradient-to-r from-[#efd7a3]/90 to-[#f6e9cd]/60 px-3 py-1.5 font-nunito text-[14px] font-extrabold uppercase leading-snug text-gold-dark sm:text-[15px]">
+        {hero.highlight}
+      </p>
+      <p class="mt-3 font-jost text-[24px] font-light leading-tight text-gold-deep sm:text-[30px]">{hero.products}</p>
+
+      <ul class="mt-3 max-w-[400px]">
+        {hero.checks.map((c) => (
+          <li class="flex items-center gap-3 border-b border-gold-deep/30 py-1.5 transition-transform duration-300 last:border-b-0 hover:translate-x-1.5">
+            <NatIcon name={c.icon} class="h-9 w-9 shrink-0 text-gold-deep" />
+            <span class="font-nunito text-[19px] text-[#2b2b33] sm:text-[21px]">{c.lead} <strong class="font-extrabold text-gold-deep">{c.strong}</strong></span>
+          </li>
+        ))}
+      </ul>
+
+      <p class="mt-3 font-nunito text-[16px] font-extrabold text-[#2b2b33]">{hero.note}</p>
+      <p class="font-nunito text-[14px] italic leading-snug text-[#5a4524]">{hero.small}</p>
+      <BuyButton size="lg" class="mt-5" />
+      <p class="mt-3 font-nunito text-[12px] font-bold uppercase tracking-[0.3em] text-[#a67c35]">{hero.closing}</p>
+    </div>
+  </div>
+</section>

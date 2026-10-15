@@ -7,11 +7,11 @@ import { products } from '../../data/home';
 <section id="products" class="bg-gradient-to-b from-[#faf5ec] to-[#f4eadb] px-5 py-16 lg:py-24" aria-labelledby="products-title">
   <div class="mx-auto max-w-[1200px]">
     <SectionHeading eyebrow="Our Products" title="More Than Weight Loss." strong="Support for the Whole You." />
-    <ul class="mt-10 grid gap-6 lg:grid-cols-3" data-stagger>
+    <ul class="mt-10 grid gap-6 md:grid-cols-2" data-stagger>
       {products.map((p) => (
         <li class="group flex flex-col overflow-hidden rounded-[22px] border border-[#eadfca] bg-white shadow-[0_10px_30px_rgba(90,60,20,0.08)] transition duration-300 hover:-translate-y-2 hover:shadow-[0_22px_44px_rgba(90,60,20,0.18)]">
           <a href={p.href} class="block overflow-hidden" tabindex="-1" aria-hidden="true">
-            <img src={p.image} alt={p.alt} width="640" height="520" loading="lazy" class="h-[260px] w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+            <img src={p.image} alt={p.alt} width="640" height="520" loading="lazy" class="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-105" />
           </a>
           <div class="flex flex-1 flex-col p-6">
             <p class="font-nunito text-[12px] font-bold uppercase tracking-[0.3em] text-[#a67c35]">{p.label}</p>

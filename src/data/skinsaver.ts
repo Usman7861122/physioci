@@ -48,8 +48,8 @@ export const purchaseOptions = [
     price: 259.99,
     comparePrice: 269.98,
     badge: null as string | null,
-    image: '/images/skinsaver/ss-option-bundle.webp',
-    description: 'GLP-1 SIDEKICK™ + GLP-1 SkinSaver™ together.',
+    image: '/images/bundle/bundle-option.webp',
+    description: 'GLP-1 Total Transformation System™: GLP-1 SIDEKICK™ + GLP-1 SkinSaver™.',
     variantId: '',
   },
 ];

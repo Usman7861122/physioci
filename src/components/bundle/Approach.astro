@@ -1,0 +1,41 @@
+---
+import BuyButton from '../BuyButton.astro';
+import NatIcon from '../natures/NatIcon.astro';
+import { approach } from '../../data/bundle';
+---
+<section class="bg-gradient-to-br from-[#faf5ec] to-[#f4eadb] px-5" aria-labelledby="bun-approach-title">
+  <div class="mx-auto grid max-w-[1200px] items-center gap-10 py-14 lg:grid-cols-[minmax(0,520px)_1fr] lg:gap-14 lg:py-16">
+    <img
+      src="/images/bundle/bundle-problem.webp"
+      alt="GLP-1 Sidekick and GLP-1 SkinSaver with a pink drink, a scoop of powder and a white flower"
+      width="1000"
+      height="1073"
+      loading="lazy"
+      data-reveal="left"
+      class="h-auto w-full rounded-[22px] shadow-[0_18px_40px_rgba(90,60,20,0.18)]"
+    />
+    <div class="font-nunito" data-stagger>
+      <h2 id="bun-approach-title" class="font-jost text-[30px] font-light uppercase leading-[1.05] text-gold-deep sm:text-[44px]">
+        {approach.title[0]}<br /><strong class="font-semibold">{approach.title[1]}</strong>
+      </h2>
+      <p class="mt-4 max-w-[560px] text-[17px] leading-[1.5] text-[#2f2f35]">{approach.intro}</p>
+      <hr class="my-5 w-[85%] border-0 border-t border-gold-deep/40" />
+      <p class="text-[15px] font-extrabold uppercase tracking-[0.12em] text-gold-deep">{approach.lead}</p>
+
+      <ul class="mt-2">
+        {approach.items.map((it) => (
+          <li class="flex items-center gap-4 border-b border-gold-deep/25 py-3 transition-transform duration-300 hover:translate-x-1.5">
+            <NatIcon name={it.icon} class="h-[44px] w-[44px] shrink-0 text-gold-deep" />
+            <div>
+              <h3 class="text-[17px] font-extrabold uppercase leading-tight text-gold-deep">{it.title}</h3>
+              <p class="text-[15px] leading-snug text-[#33333a]">{it.text}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+
+      <p class="mt-4 inline-block rounded-md bg-gradient-to-r from-[#efd7a3]/90 to-[#f6e9cd]/60 px-3 py-1.5 text-[13px] font-extrabold uppercase tracking-[0.12em] text-gold-dark">{approach.closing}</p>
+      <div><BuyButton class="mt-5" /></div>
+    </div>
+  </div>
+</section>

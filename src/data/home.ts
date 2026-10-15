@@ -34,14 +34,25 @@ export const products = [
   },
   {
     href: '/product/natures-glp-1',
-    image: img('2026/07/GLP-1-nature.jpeg'),
-    alt: 'Nature’s GLP-1 supplement',
+    image: '/images/natures-glp1/nat-gallery-2.webp',
+    alt: 'Nature’s GLP-1 bottle with a glass of water and capsules',
     label: 'Botanical Support',
     name: 'Nature’s GLP-1™',
-    lead: 'Natural metabolic support.',
-    text: 'A natural metabolic support supplement designed to help support healthy blood sugar, appetite regulation, metabolism, gut health, and energy using botanical extracts, probiotics, and clinically inspired ingredients.',
-    points: [],
+    lead: 'Your Body’s Natural GLP-1 Response.',
+    text: 'An advanced blend of plant-based and nutrient-rich ingredients designed to support key metabolic pathways associated with appetite, blood sugar, and healthy weight management.',
+    points: ['Blood Sugar Support', 'Appetite Regulation', 'Metabolic Support', 'Gut Health Support'],
     price: '',
+  },
+  {
+    href: '/product/glp-1-total-transformation-system',
+    image: '/images/bundle/bundle-gallery-1.webp',
+    alt: 'GLP-1 Sidekick jar and GLP-1 SkinSaver pump bottle together',
+    label: 'Best Value',
+    name: 'GLP-1 Total Transformation System™',
+    lead: 'A complete inside + outside support system.',
+    text: 'GLP-1 SIDEKICK™ + GLP-1 SkinSaver™. Two science-backed formulas. One more complete you.',
+    points: ['Maintain Lean Muscle', 'Enhance Skin Firmness', 'Deep Hydration', 'Support Digestive Health'],
+    price: '$259.99',
   },
 ];
 
@@ -66,11 +77,11 @@ export const steps = [
 
 export const deals = [
   {
-    href: '/product/glp-1-sidekick#buynow',
-    image: '/images/skinsaver/ss-option-bundle.webp',
+    href: '/product/glp-1-total-transformation-system#buynow',
+    image: '/images/bundle/bundle-option.webp',
     alt: 'GLP-1 Sidekick jar with GLP-1 SkinSaver bottle',
     tag: 'Best value',
-    title: 'The Bundle',
+    title: 'Total Transformation System™',
     text: 'GLP-1 SIDEKICK™ + GLP-1 SkinSaver™ together.',
     price: '$259.99',
   },
