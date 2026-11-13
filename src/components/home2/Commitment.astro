@@ -1,0 +1,26 @@
+---
+import Button from '../home/Button.astro';
+import { commitment as c } from '../../data/home2';
+---
+<section
+  class="relative flex items-center overflow-hidden bg-cover bg-center px-5 py-16"
+  style="background-image:url('/images/skinsaver/ss-advanced-bg.webp')"
+  aria-labelledby="commitment-title"
+>
+  <div class="absolute inset-0 bg-[#f8f1e4]/75" aria-hidden="true"></div>
+  <div class="relative mx-auto max-w-[860px] text-center" data-stagger>
+    <p class="font-nunito text-[13px] font-bold uppercase tracking-[0.35em] text-[#a67c35]">{c.eyebrow}</p>
+    <h2 id="commitment-title" class="mt-2 font-jost text-[32px] font-light uppercase leading-[1.08] text-gold-deep sm:text-[50px]">{c.title} <strong class="font-bold">{c.strong}</strong></h2>
+    <div class="mt-5 space-y-3 font-nunito text-[17px] leading-[1.65] text-[#33333a]">
+      {c.paragraphs.map((p) => <p>{p}</p>)}
+    </div>
+    <p class="mt-6 font-nunito text-[17px] font-bold text-gold-dark">{c.belief}</p>
+    <blockquote class="mt-2 font-playfair text-[22px] font-medium leading-snug text-black sm:text-[26px]">{c.quote}</blockquote>
+    <p class="mt-6 font-nunito text-[17px] leading-[1.6] text-[#33333a]">{c.outro}</p>
+    <p class="mt-5 font-playfair text-[20px] font-bold text-black">{c.sign}</p>
+    <p class="font-nunito text-[14px] font-bold uppercase tracking-[0.2em] text-gold-deep">{c.motto}</p>
+    <div class="mt-8">
+      <Button href={c.button.href}>{c.button.label}</Button>
+    </div>
+  </div>
+</section>

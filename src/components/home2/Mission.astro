@@ -1,0 +1,10 @@
+---
+import { mission } from '../../data/home2';
+---
+<section class="bg-gradient-to-b from-[#faf5ec] to-[#f4eadb] px-5 py-14 lg:py-20" aria-label="Our mission">
+  <div class="mx-auto max-w-[860px] text-center" data-stagger>
+    {mission.paragraphs.slice(1).map((p) => <p class="mb-4 font-nunito text-[17px] leading-[1.7] text-[#33333a] sm:text-[18px]">{p}</p>)}
+    <div class="mx-auto my-6 h-px w-24 bg-gold-deep/40" aria-hidden="true"></div>
+    <p class="font-playfair text-[22px] font-medium leading-snug text-black sm:text-[28px]">{mission.closing}</p>
+  </div>
+</section>

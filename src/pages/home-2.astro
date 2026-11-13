@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/home2/Hero.astro';
+import Mission from '../components/home2/Mission.astro';
+import Collection from '../components/home2/Collection.astro';
+import ProductSlide from '../components/home2/ProductSlide.astro';
+import BundleSlide from '../components/home2/BundleSlide.astro';
+import Commitment from '../components/home2/Commitment.astro';
+import { slides } from '../data/home2';
+---
+<BaseLayout
+  title="Physio / Sci Laboratories – Physician-Inspired. Science-Driven."
+  description="Physician-inspired, science-driven nutritional and skincare formulations for your wellness journey."
+  showComparison={false}
+  overlayHeader
+>
+  <Hero />
+  <Mission />
+  <Collection />
+  {slides.map((p, i) => <ProductSlide product={p} index={i} />)}
+  <BundleSlide />
+  <Commitment />
+</BaseLayout>

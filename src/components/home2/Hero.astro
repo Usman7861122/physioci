@@ -1,0 +1,27 @@
+---
+import Button from '../home/Button.astro';
+import { mission } from '../../data/home2';
+---
+<section class="relative flex flex-col overflow-hidden bg-[#f8f1e4] lg:min-h-[100svh] lg:flex-row lg:items-center" aria-labelledby="home-title">
+  <img
+    src="/images/final-home.webp"
+    alt="GLP-1 Sidekick, GLP-1 SkinSaver and Nature’s GLP-1 on a warm cream background with a white flower"
+    width="1732"
+    height="908"
+    fetchpriority="high"
+    class="hero-zoom order-2 h-[340px] w-full object-cover object-[85%_bottom] sm:h-[460px] lg:absolute lg:inset-0 lg:h-full lg:object-[center_bottom]"
+  />
+  <!-- soft layer on the left so the text is easy to read -->
+  <div class="absolute inset-y-0 left-0 hidden w-[62%] bg-gradient-to-r from-[#f8f1e4]/95 via-[#f8f1e4]/70 to-transparent lg:block" aria-hidden="true"></div>
+
+  <div class="relative order-1 mx-auto w-full max-w-[1200px] px-5 pb-12 pt-[190px] lg:pb-20 lg:pt-[170px]">
+    <div class="max-w-[540px]" data-stagger>
+      <p class="font-nunito text-[13px] font-bold uppercase tracking-[0.35em] text-[#a67c35]">{mission.eyebrow}</p>
+      <h1 id="home-title" class="mt-2 font-tenor text-[30px] font-semibold uppercase leading-[1.15] text-gold sm:text-[38px]">{mission.tagline}</h1>
+      <p class="mt-5 font-nunito text-[17px] leading-[1.6] text-[#33333a] sm:text-[18px]">{mission.paragraphs[0]}</p>
+      <div class="mt-7 flex flex-wrap gap-3">
+        <Button href={mission.button.href}>{mission.button.label}</Button>
+      </div>
+    </div>
+  </div>
+</section>
